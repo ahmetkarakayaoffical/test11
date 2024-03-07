@@ -1,0 +1,75 @@
+###
+###    Copyright (C) 2024 Ahmet Karakaya  <ahmet.karakaya02@gmail.com>
+###
+###--------------------------------------------------------------------------
+###    This file is part of scndlp.
+###
+### SCN DLP Product written and developed in Turkey
+#### This product is designed taking into account the demands and expectations of Turkish companies
+#### Product is licensed and extra License is required
+### Please contact the sales team for current versions.
+###
+### SCN DLP is written to provide quality dlp service to companies at an affordable price,
+#### More features will come with new releases
+#### We test and deploy many features with the Dlp product
+### Patented product
+###--------------------------------------------------------------------------
+
+AC_INIT([scndlp], [%%%VERSION%%%], [ahmet.karakaya02@gmail.com])
+
+AC_PREREQ([2.64])
+AC_COPYRIGHT([Copyright (C) 2024 SCN Security Global ])
+AM_INIT_AUTOMAKE
+
+AC_ERLANG_NEED_ERLC
+AC_PREFIX_PROGRAM(erl)
+AC_ERLANG_SUBST_ROOT_DIR
+AC_ERLANG_SUBST_ERTS_VER
+AC_ERLANG_SUBST_LIB_DIR
+AC_ERLANG_CHECK_LIB([kernel])
+AC_ERLANG_CHECK_LIB([stdlib])
+AC_ERLANG_CHECK_LIB([edoc])
+AC_ERLANG_CHECK_LIB([eunit])
+AC_ERLANG_CHECK_LIB([mnesia])
+AC_ERLANG_CHECK_LIB([xmerl])
+AC_ERLANG_CHECK_LIB([ssl])
+AC_ERLANG_CHECK_LIB([crypto])
+AC_ERLANG_CHECK_LIB([public_key])
+AC_ERLANG_CHECK_LIB([sasl])
+AC_ERLANG_CHECK_LIB([thrift])
+AC_ERLANG_CHECK_LIB([mysql_driver])
+AC_ERLANG_SUBST_INSTALL_LIB_SUBDIR([scndlp], [%%%VERSION%%%])
+
+AC_PATH_PROG(THRIFT, thrift, thrift, $PATH:/usr/local/bin:/usr/bin)
+AC_PATH_PROG(MVN, mvn, mvn, $PATH:/usr/local/bin:/usr/bin:/opt/maven/bin)
+AC_PATH_PROG(WGET, wget, wget, $PATH:/usr/local/bin:/usr/bin:/bin)
+AC_PATH_PROG(TAR, tar, tar, $PATH:/usr/local/bin:/usr/bin:/bin)
+AC_PROG_LN_S
+
+AC_CONFIG_FILES([
+		Makefile 
+		src/Makefile
+		src/scndlp/Makefile
+		src/scndlp/scndlp.app
+		src/scndlp/scndlp.rel
+		src/scndlp/overview.edoc
+		src/thrift/Makefile
+		src/lib/Makefile
+		src/lib/tika-xps/Makefile
+		src/backend/Makefile
+		src/ui/Makefile
+		src/script/Makefile
+		src/schema/Makefile
+		src/sysconf/Makefile
+		src/sysconf/apache/Makefile
+		src/sysconf/jetty/Makefile
+		src/sysconf/logrotate/Makefile
+		src/sysconf/rsyslog/Makefile
+		src/sysconf/solr/Makefile
+		src/sysconf/tomcat/Makefile
+		src/resources/Makefile
+		src/integration/Makefile
+		src/integration/seclore/Makefile
+		src/endpoint/Makefile
+	])
+AC_OUTPUT
